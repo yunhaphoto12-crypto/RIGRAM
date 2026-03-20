@@ -17,49 +17,49 @@ export default async function DepartmentPage({
     .eq('id', id)
 
 return (
-        <div className="w-full flex flex-col gap-8 items-center">
+<div className="w-full flex flex-col gap-8 items-center">
 
-        <section className="relative w-full max-w-screen-xl mx-auto bg-white p-5 rounded-xl md:p-10 flex justify-center">
-            
-            <div className="flex flex-col items-center gap-4 p-6 rounded-lg">
+  <section className="w-full max-w-[1600px] mx-auto bg-white border border-border rounded-md p-5 md:p-10 shadow-dropdown transition"> 
+    <div className="flex flex-col items-center gap-12">
 
-            {/* 사진 2개 가로 배치 */}
-            <div className="flex gap-4">
-                <Link href={`/department/student/${students?.[0]?.id}/image/graduate`}>
-                <div className="relative w-[380px] h-[380px] rounded-xl overflow-hidden hover:scale-105 transition">
-                    {students?.[0]?.profile_graduate && (
-                    <Image
-                        src={students[0].profile_graduate}
-                        alt="증명사진"
-                        fill
-                        sizes="380px"
-                        className="object-cover"
-                    />
-                    )}
-                </div>
-                </Link>
+      {/* 이미지 영역 */}
+      <div className="flex gap-4 flex-wrap justify-center">
 
-                <Link href={`/department/student/${students?.[0]?.id}/image/default`}>
-                <div className="relative w-[380px] h-[380px] rounded-xl overflow-hidden hover:scale-105 transition">
-                    {students?.[0]?.profile_default && (
-                    <Image
-                        src={students[0].profile_default}
-                        alt="증명사진"
-                        fill
-                        sizes="380px"
-                        className="object-cover"
-                    />
-                    )}
-                </div>
-                </Link>
-            </div>
+        <Link href={`/department/student/${students?.[0]?.id}/image/graduate`}>
+          <div className="relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[380px] md:h-[380px] rounded-xl overflow-hidden bg-gray-100 hover:scale-105 transition">
+            {students?.[0]?.profile_graduate && (
+              <Image
+                src={students[0].profile_graduate}
+                alt="증명사진"
+                fill
+                sizes="(max-width: 640px) 250px, (max-width: 768px) 300px, 380px"
+                className="object-contain"
+              />
+            )}
+          </div>
+        </Link>
 
-            {/* 이름 */}
-            <p className="text-center font-medium text-lg">{students?.[0]?.name}</p>
+        <Link href={`/department/student/${students?.[0]?.id}/image/default`}>
+          <div className="relative w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[380px] md:h-[380px] rounded-xl overflow-hidden bg-gray-100 hover:scale-105 transition">
+            {students?.[0]?.profile_default && (
+              <Image
+                src={students[0].profile_default}
+                alt="증명사진"
+                fill
+                sizes="(max-width: 640px) 250px, (max-width: 768px) 300px, 380px"
+                className="object-contain"
+              />
+            )}
+          </div>
+        </Link>
 
-            </div>
+      </div>
 
-        </section>
-        </div>
+      {/* 이름 */}
+      <h1 className="text-xl md:text-2xl font-bold">{students?.[0]?.name}</h1>
+    </div>
+  </section>
+</div>
+
   )
 }
